@@ -1,11 +1,11 @@
 <template>
-    <div class="tile flex-centured" :class="{ checked: task.checked }">
+    <div class="tile tile-centered" :class="{ checked: task.checked }">
         <div class="tile-content">
             <div class="tile-subtitle">
                 {{ task.description }}
             </div>
         </div>
-        <div class="tile-action">
+        <div>
             <button @click="$emit('toggle', task)" class="btn btn-primary">
                 <span v-if="task.checked">Desmarcar</span>
                 <span v-else>Check</span>
@@ -36,4 +36,11 @@ export default defineComponent({
         text-decoration: line-through;
         color: lightslategrey
     }
+    .tile {
+        margin-top: 1rem;
+        padding: 20px;
+        box-shadow: 0 0.25rem 1rem rgba(63, 127, 191, 1);
+
+    }
+    
 </style>
