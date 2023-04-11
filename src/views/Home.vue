@@ -4,9 +4,10 @@
       <form @submit.prevent="includeTask(task)">    
 
         <div class="input-group">
-          <input type="text" v-model="task.description" class="form-input"  placeholder=" Adicionar uma task">
+          <input type="text" v-model="task.description" class="form-input"  placeholder=" Adicionar uma task" :style="{'border': borderStyle}">
           <button class="btn btn-success input-group-btn" :class="{ loading }"><i class="icon icon-arrow-right"></i> Adicionar </button>
         </div>
+          <p v-if="borderStyle === '1px solid red'" :style="{color: 'red'}">Erro</p>
 
         <ul class="step">
           <li class="step-item active">
@@ -41,7 +42,8 @@
       return { 
         task:  { 
           checked: false
-        } 
+        },
+        borderStyle: '1px solid #000',
       };
     },
     computed: { //funções assíncronas
@@ -62,6 +64,7 @@
           this.task = { checked: false };
         } else {
           console.log("Erro");
+          this.borderStyle = '1px solid red';
         }
       },
     }
